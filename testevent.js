@@ -1,13 +1,14 @@
 
 const EventEmitter = require('events');
 //First letter of every world is uppercase its indicate its a class => EventEmitter is a class
-const emitter = new EventEmitter(); //create an object
+// Emit meaning : Making a noise, produce somthing - signalling when event is happend
+
+const Logger = require('./logger');
+const logger = new Logger();
 
 //Register a listener when event is raise
-emitter.on('messageLogged', function(arg){ //  or prefer:- e, eventArg
+logger.on('messageLogged', (arg) => {
   console.log('Listener called', arg);
 });
 
-//emit is use to raise an event
-emitter.emit('messageLogged', { id: 1, url: 'http://' });
-// Emit meaning : Making a noise, produce somthing - signalling when event is happend
+logger.log('message');
